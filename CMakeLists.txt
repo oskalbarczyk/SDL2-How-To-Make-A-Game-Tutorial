@@ -3,7 +3,7 @@ project(SDL)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(MY_SOURCES main.cpp Game.cpp Game.h Game.cpp TextureManager.h TextureManager.cpp)
+set(MY_SOURCES main.cpp Game.cpp Game.h Game.cpp TextureManager.h TextureManager.cpp GameObject.cpp GameObject.h)
 
 find_package(SDL2_image REQUIRED)
 find_package(SDL2 REQUIRED COMPONENTS SDL2)
