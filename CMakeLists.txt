@@ -18,7 +18,7 @@ set(HEADERS
         Map.h
         ECS/ECS.h
         ECS/SpriteComponent.h
-        ECS/PositionComponent.h)
+        ECS/TransformComponent.h Vector2D.h Vector2D.cpp)
 
 
 
