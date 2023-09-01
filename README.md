@@ -12,6 +12,10 @@
 
 💻 This repository was created using CLion on macOS  and the libraries i installed in the standard location (/library/templates). If you use another IDE on a different system, you may need to make changes in the CMake file.
 
+## If you find this repository helpful, please consider:
 
+🌟 Starring it to show your appreciation.
 
-<img width="820" alt="game" src="https://github.com/oskalbarczyk/SDL2_How_To_Make_A_Game_Tutorial/assets/106467480/c1a05e8e-5057-4df7-9531-747c002bcab2">
+🍴 Forking it to make your own games.
+
+<img width="820" alt="game" src="https://github.com/oskalbarczyk/SDL2-How-To-Make-A-Game-Tutorial/assets/106467480/ef2f6a4f-624e-44b7-a7d1-c6acd7564f30">
