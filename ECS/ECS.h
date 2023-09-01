@@ -70,11 +70,11 @@ public:
 
     template<typename T>
     bool hasComponent() const {
-        return componentBitSet[getComponentID<T>];
+        return componentBitSet[getComponentID<T>()];
     }
 
     template<typename T, typename ... TArgs>
-    T &addComponentID(TArgs &&... mArgs) {
+    T &addComponent(TArgs &&... mArgs) {
         T *c(new T(std::forward<TArgs>(mArgs)...));
         c->entity = this;
         std::unique_ptr<Component> uPtr{c};
