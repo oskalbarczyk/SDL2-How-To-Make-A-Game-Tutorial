@@ -3,6 +3,8 @@
 #include "Components.h"
 #include "SDL.h"
 #include "../TextureManager.h"
+#include "Animation.h"
+#include "map"
 
 class SpriteComponent : public Component{
 private:
@@ -16,14 +18,28 @@ private:
 
 
 public:
+
+    int animIndex = 0;
+
+    std::map<const char* ,Animation> animations;
+
+    SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
+
     SpriteComponent() = default;
     SpriteComponent(const char* path){
         setTex(path);
     }
-    SpriteComponent(const char* path,int nFrames,int mSpeed){
-        animated = true;
-        frames = nFrames;
-        speed = mSpeed;
+    SpriteComponent(const char* path, bool isAnimated){
+        animated = isAnimated;
+
+        Animation idle = Animation(0,3,100);
+        Animation walk = Animation(1,8,100);
+
+        animations.emplace("Idle",idle);
+        animations.emplace("Walk",walk);
+
+        Play("Idle");
+
         setTex(path);
     }
     ~SpriteComponent(){
@@ -45,9 +61,13 @@ public:
     }
     void update() override{
 
+
+
         if(animated){
             srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks()/speed)% frames);
         }
+
+        srcRect.y = animIndex * transform->height;
 
         destRect.x = static_cast<int>(transform->position.x);
         destRect.y = static_cast<int>(transform->position.y);
@@ -55,6 +75,12 @@ public:
         destRect.h = transform->height * transform->scale;
     }
     void draw() override{
-        TextureManager::Draw(texture,srcRect,destRect);
+        TextureManager::Draw(texture,srcRect,destRect,spriteFlip);
+    }
+
+    void Play(const char* animName){
+        frames = animations[animName].frames;
+        animIndex = animations[animName].index;
+        speed = animations[animName].speed;
     }
 };
