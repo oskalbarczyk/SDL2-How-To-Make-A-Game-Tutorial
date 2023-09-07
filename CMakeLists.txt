@@ -18,13 +18,16 @@ set(HEADERS
         Map.h
         ECS/ECS.h
         ECS/SpriteComponent.h
-        ECS/TransformComponent.h Vector2D.h Vector2D.cpp ECS/KeyboardController.h ECS/ColliderComponent.h Collision.h Collision.cpp ECS/TileComponent.h ECS/ECS.cpp ECS/Animation.h AssetManager.h AssetManager.cpp ECS/ProjectileComponent.h)
+        ECS/TransformComponent.h Vector2D.h Vector2D.cpp ECS/KeyboardController.h ECS/ColliderComponent.h Collision.h Collision.cpp ECS/TileComponent.h ECS/ECS.cpp ECS/Animation.h AssetManager.h AssetManager.cpp ECS/ProjectileComponent.h ECS/UILabel.h)
 
 
 
 
 find_package(SDL2_image REQUIRED)
 find_package(SDL2 REQUIRED COMPONENTS SDL2)
+find_package(SDL2_ttf REQUIRED COMPONENTS SDL2)
 add_executable(my_game ${SOURCES} ${HEADERS})
 target_link_libraries(my_game PRIVATE SDL2::SDL2)
 target_link_libraries(my_game PRIVATE SDL2_image::SDL2_image)
+target_link_libraries(my_game PRIVATE SDL2_ttf::SDL2_ttf)
+
